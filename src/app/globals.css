@@ -1,3 +1,40 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .animate {
+        @apply transition-all duration-300 ease-in-out;
+    }
+
+    .btn-outline-white {
+        @apply border border-slate-300 text-slate-300 px-2 py-1 rounded-lg
+            hover:text-slate-900 hover:font-semibold hover:bg-slate-300 
+            focus-within:bg-slate-300 outline-none;
+    }
+
+    .btn-outline-red {
+        @apply border border-red-500 text-red-500 px-2 py-1 rounded-lg
+            hover:text-red-100 hover:bg-red-600 
+            focus-within:bg-red-600 outline-none;
+    }
+
+    .btn-green {
+        @apply bg-green-600 text-green-100 px-2 py-1 rounded-lg
+            hover:text-green-100 hover:bg-green-700 
+            focus-within:bg-green-900 outline-none;
+    }
+
+    .btn-white {
+        @apply font-semibold bg-slate-300 
+            text-slate-900 px-2 py-1 rounded-lg
+            hover:text-slate-900 hover:bg-slate-400 
+            focus-within:bg-slate-400 outline-none;
+    }
+
+    .txt-field {
+        @apply border border-slate-600 bg-slate-700 
+            rounded-lg px-2 py-1 outline-none
+            focus-within:border-slate-100;
+    }
+}
