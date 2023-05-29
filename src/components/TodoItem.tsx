@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 type TodoItemProps = {
     id: string;
     title: string;
-    complete: boolean;
+    completed: boolean;
     toggleTodo: (id: string, completed: boolean) => void;
     deleteTodo: (id: string) => void;
 };
@@ -13,7 +13,7 @@ type TodoItemProps = {
 export function TodoItem({
     id,
     title,
-    complete,
+    completed,
     toggleTodo,
     deleteTodo,
 }: TodoItemProps) {
@@ -25,26 +25,27 @@ export function TodoItem({
                 <input
                     id={id}
                     type="checkbox"
-                    className="cursor-pointer peer"
-                    defaultChecked={complete}
+                    className="checkbox peer animate mr-3"
+                    defaultChecked={completed}
                     onChange={(e) => toggleTodo(id, e.target.checked)}
                 />
-                <label htmlFor={id} className="peer-checked:line-through">
+                <label
+                    htmlFor={id}
+                    className="peer-checked:line-through cursor-pointer select-none"
+                >
                     {title}
                 </label>
             </div>
 
-            <div>
-                <input
-                    type="button"
-                    value="Delete"
-                    className="btn-outline-red animate"
-                    onClick={(e) => {
-                        deleteTodo(id);
-                        router.refresh();
-                    }}
-                />
-            </div>
+            <input
+                type="button"
+                value="Delete"
+                className="btn-outline-red animate"
+                onClick={(e) => {
+                    deleteTodo(id);
+                    router.refresh();
+                }}
+            />
         </li>
     );
 }

@@ -37,4 +37,8 @@
             rounded-lg px-2 py-1 outline-none
             focus-within:border-slate-100;
     }
+
+    .checkbox {
+        @apply w-3.5 h-3.5 text-blue-600 bg-gray-600 border-gray-300 rounded checked:bg-blue-600 appearance-none;
+    }
 }
