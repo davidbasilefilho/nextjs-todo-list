@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { prisma } from "./client";
 import { TodoItem } from "@/components/TodoItem";
+import { useRouter } from "next/navigation";
 
 function getTodos() {
     return prisma.todo.findMany();
@@ -18,6 +19,7 @@ async function deleteTodo(id: number) {
 
 export default async function Home() {
     const todos = await getTodos();
+    const router = useRouter();
 
     return (
         <>
@@ -36,7 +38,10 @@ export default async function Home() {
                         key={todo.id}
                         {...todo}
                         toggleTodo={toggleTodo}
-                        deleteTodo={deleteTodo}
+                        deleteTodo={() => {
+                            deleteTodo;
+                            router.refresh();
+                        }}
                     />
                 ))}
             </ul>
