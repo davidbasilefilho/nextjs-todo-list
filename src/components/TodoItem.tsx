@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 
 type TodoItemProps = {
-    id: string;
+    id: number;
     title: string;
     completed: boolean;
     toggleTodo: (id: number, completed: boolean) => void;
@@ -23,14 +23,14 @@ export function TodoItem({
         <li className="flex gap-3 justify-between">
             <div>
                 <input
-                    id={id}
+                    id={id.toString()}
                     type="checkbox"
                     className="checkbox peer animate mr-3"
                     defaultChecked={completed}
                     onChange={(e) => toggleTodo(id, e.target.checked)}
                 />
                 <label
-                    htmlFor={id}
+                    htmlFor={id.toString()}
                     className="peer-checked:line-through cursor-pointer select-none"
                 >
                     {title}
