@@ -6,8 +6,8 @@ type TodoItemProps = {
     id: string;
     title: string;
     completed: boolean;
-    toggleTodo: (id: string, completed: boolean) => void;
-    deleteTodo: (id: string) => void;
+    toggleTodo: (id: number, completed: boolean) => void;
+    deleteTodo: (id: number) => void;
 };
 
 export function TodoItem({

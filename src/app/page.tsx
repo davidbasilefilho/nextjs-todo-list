@@ -6,12 +6,12 @@ function getTodos() {
     return prisma.todo.findMany();
 }
 
-async function toggleTodo(id: string, completed: boolean) {
+async function toggleTodo(id: number, completed: boolean) {
     "use server";
     await prisma.todo.update({ where: { id }, data: { completed } });
 }
 
-async function deleteTodo(id: string) {
+async function deleteTodo(id: number) {
     "use server";
     await prisma.todo.delete({ where: { id } });
 }
