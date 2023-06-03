@@ -6,13 +6,12 @@ generator client {
 }
 
 datasource db {
-    provider          = "sqlite"
-    url               = env("DATABASE_URL")
-    shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
 }
 
 model Todo {
-    id        String   @id @default(uuid())
+    id        Int      @id @default(autoincrement())
     title     String
     completed Boolean
     createdAt DateTime @default(now())

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { prisma } from "./db";
+import { prisma } from "./client";
 import { TodoItem } from "@/components/TodoItem";
 
 function getTodos() {

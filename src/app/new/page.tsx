@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { prisma } from "../db";
+import { prisma } from "../client";
 import { redirect } from "next/navigation";
 
 async function createTodo(data: FormData) {
