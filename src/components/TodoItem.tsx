@@ -43,7 +43,7 @@ export function TodoItem({
                     }}
                 />
                 {checked && (
-                    <FaCheck className="w-3 h-3 cursor-pointer text-slate-50 absolute left-1 top-2" />
+                    <FaCheck className="w-3 h-3 pointer-events-none select-none text-slate-50 absolute left-1 top-2" />
                 )}
 
                 <label
