@@ -8,14 +8,14 @@ async function createTodo(data: FormData) {
     const title = data.get("title")?.valueOf();
     if (typeof title !== "string" || title.length === 0) {
         throw new Error("Invalid title");
+    } else {
+        await prisma.todo.create({
+            data: {
+                title,
+                completed: false,
+            },
+        });
     }
-
-    await prisma.todo.create({
-        data: {
-            title,
-            completed: false,
-        },
-    });
 
     redirect("/");
 }
@@ -23,14 +23,17 @@ async function createTodo(data: FormData) {
 export default function New() {
     return (
         <>
-            <div className="flex justify-between mb-4">
+            <div className="flex justify-between">
                 <h1 className="text-2xl text-center">New Todo</h1>
             </div>
+
+            <hr className="border-slate-50 my-4" />
 
             <form action={createTodo} className="flex gap-2 flex-col">
                 <input
                     type="text"
                     name="title"
+                    placeholder="Finish the project until 9pm"
                     className="txt-field animate mb-2"
                 />
                 <div className="flex gap-3 justify-end">

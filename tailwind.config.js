@@ -9,6 +9,13 @@ module.exports = {
     theme: {
         extend: {
             colors: {
+                blue: "#1e66f5",
+                green: {
+                    400: "#40a02b",
+                    //500: "#3e8632",
+                    500: "#336f29",
+                },
+                red: "#d20f39",
                 slate: {
                     950: "#181926",
                     900: "#1e2030",
