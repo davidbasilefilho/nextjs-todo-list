@@ -13,7 +13,7 @@ export default function RootLayout({
     children,
 }: {
     children: React.ReactNode;
-}) {
+}): JSX.Element {
     return (
         <html lang="en">
             <body className={`${inter.className} bg-slate-900 text-slate-50`}>

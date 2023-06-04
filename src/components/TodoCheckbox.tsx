@@ -12,7 +12,7 @@ export default function TodoCheckbox({
     checked,
     setChecked,
     className,
-}: TodoCheckboxProps) {
+}: TodoCheckboxProps): JSX.Element {
     return (
         <>
             <input

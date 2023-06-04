@@ -2,7 +2,7 @@ import Link from "next/link";
 import { prisma } from "../client";
 import { redirect } from "next/navigation";
 
-async function createTodo(data: FormData) {
+async function createTodo(data: FormData): Promise<void> {
     "use server";
 
     const title = data.get("title")?.valueOf();
@@ -20,7 +20,7 @@ async function createTodo(data: FormData) {
     redirect("/");
 }
 
-export default function New() {
+export default function New(): JSX.Element {
     return (
         <>
             <div className="flex justify-between">

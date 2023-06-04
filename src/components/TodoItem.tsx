@@ -20,7 +20,7 @@ export function TodoItem({
     toggleTodo,
     deleteTodo,
     className,
-}: TodoItemProps) {
+}: TodoItemProps): JSX.Element {
     const router = useRouter();
     const [checked, setChecked] = useState(completed);
 

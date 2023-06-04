@@ -1,22 +1,23 @@
 import Link from "next/link";
 import { prisma } from "./client";
 import { TodoItem } from "@/components/TodoItem";
+import { Prisma, PrismaPromise } from "@prisma/client";
 
 function getTodos() {
     return prisma.todo.findMany();
 }
 
-async function toggleTodo(id: number, completed: boolean) {
+async function toggleTodo(id: number, completed: boolean): Promise<void> {
     "use server";
     await prisma.todo.update({ where: { id }, data: { completed } });
 }
 
-async function deleteTodo(id: number) {
+async function deleteTodo(id: number): Promise<void> {
     "use server";
     await prisma.todo.delete({ where: { id } });
 }
 
-export default async function Home() {
+export default async function Home(): Promise<JSX.Element> {
     const todos = await getTodos();
 
     return (
