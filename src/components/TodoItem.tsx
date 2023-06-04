@@ -33,20 +33,6 @@ export function TodoItem({
             className={`flex card shadow-lg gap-3 justify-between ${className}`}
         >
             <div className="relative">
-                {/* <input
-                    id={id.toString()}
-                    type="checkbox"
-                    className="checkbox align-middle animate mr-3 peer"
-                    defaultChecked={checked}
-                    onChange={(e) => {
-                        setChecked(e.target.checked);
-                    }}
-                />
-
-                {checked && (
-                    <FaCheck className="w-3 h-3 pointer-events-none select-none text-slate-50 absolute left-1 top-2" />
-                )} */}
-
                 <TodoCheckbox
                     id={id}
                     checked={checked}
