@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
-import { FaCheck } from "react-icons/fa";
+import TodoCheckbox from "./TodoCheckbox";
 
 type TodoItemProps = {
     id: number;
@@ -33,7 +33,7 @@ export function TodoItem({
             className={`flex card shadow-lg gap-3 justify-between ${className}`}
         >
             <div className="relative">
-                <input
+                {/* <input
                     id={id.toString()}
                     type="checkbox"
                     className="checkbox align-middle animate mr-3 peer"
@@ -42,9 +42,17 @@ export function TodoItem({
                         setChecked(e.target.checked);
                     }}
                 />
+
                 {checked && (
                     <FaCheck className="w-3 h-3 pointer-events-none select-none text-slate-50 absolute left-1 top-2" />
-                )}
+                )} */}
+
+                <TodoCheckbox
+                    id={id}
+                    checked={checked}
+                    setChecked={setChecked}
+                    className="mr-3 peer"
+                />
 
                 <label
                     htmlFor={id.toString()}

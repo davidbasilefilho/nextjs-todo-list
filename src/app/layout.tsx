@@ -1,3 +1,4 @@
+import "@total-typescript/ts-reset"; // fix TypeScript
 import "./globals.css";
 import { Inter } from "next/font/google";
 
