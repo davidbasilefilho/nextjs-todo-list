@@ -26,7 +26,7 @@ export function TodoItem({
 
     useEffect(() => {
         toggleTodo(id, checked);
-    }, [checked]);
+    }, [checked, id, toggleTodo]);
 
     return (
         <li
