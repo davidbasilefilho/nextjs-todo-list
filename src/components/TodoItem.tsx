@@ -22,7 +22,7 @@ export function TodoItem({
     className,
 }: TodoItemProps): JSX.Element {
     const router = useRouter();
-    const [checked, setChecked] = useState(completed);
+    const [checked, setChecked] = useState<boolean>(completed);
 
     useEffect(() => {
         toggleTodo(id, checked);

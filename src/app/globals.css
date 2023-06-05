@@ -17,8 +17,8 @@
 
     .btn-outline-white {
         @apply btn border border-slate-50 text-slate-50
-            hover:text-slate-800 hover:font-semibold hover:bg-slate-50 
-            focus-within:bg-slate-50;
+            hover:text-slate-800 hover:font-semibold focus-within:font-semibold hover:bg-slate-50 
+            focus-within:bg-slate-50 focus-within:text-slate-800;
     }
 
     .btn-outline-red {
@@ -28,16 +28,15 @@
     }
 
     .btn-green {
-        @apply btn bg-green-400 text-slate-950 font-semibold
+        @apply btn bg-green-400 text-slate-800 font-semibold
         hover:bg-green-500 hover:text-slate-50 hover:font-medium
         focus:bg-green-500 focus:text-slate-50 focus:font-medium;
     }
 
     .btn-white {
         @apply btn font-semibold bg-slate-300 
-            text-slate-900
-            hover:text-slate-900 hover:bg-slate-400 
-            focus-within:bg-slate-400 focus-within:text-slate-900;
+            text-slate-800 hover:bg-slate-400 
+            focus-within:bg-slate-400;
     }
 
     .txt-field {

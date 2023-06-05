@@ -3,9 +3,11 @@ import { prisma } from "./client";
 import { TodoItem } from "@/components/TodoItem";
 import { Prisma, PrismaPromise } from "@prisma/client";
 
-function getTodos() {
+const getTodos = (): PrismaPromise<
+    Array<Prisma.TodoGetPayload<Prisma.TodoArgs>>
+> => {
     return prisma.todo.findMany();
-}
+};
 
 async function toggleTodo(id: number, completed: boolean): Promise<void> {
     "use server";
