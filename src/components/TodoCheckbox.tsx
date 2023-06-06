@@ -1,3 +1,5 @@
+"use client";
+
 import { FaCheck } from "react-icons/fa";
 
 type TodoCheckboxProps = {

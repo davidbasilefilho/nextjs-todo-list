@@ -45,6 +45,14 @@
     }
 
     .checkbox {
-        @apply w-[1.25rem] h-[1.25rem] text-blue bg-slate-700 border-slate-300 rounded-md checked:bg-blue cursor-pointer appearance-none;
+        @apply w-5 h-5 text-blue bg-slate-700 border-slate-300 rounded-md checked:bg-blue cursor-pointer appearance-none;
+    }
+
+    input[type="datetime-local"] {
+        color-scheme: dark;
+    }
+
+    hr {
+        @apply border-slate-50 my-4;
     }
 }
