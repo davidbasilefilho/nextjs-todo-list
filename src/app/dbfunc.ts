@@ -2,6 +2,7 @@
 
 import { Prisma, PrismaPromise } from "@prisma/client";
 import { prisma } from "./client";
+import { CreateTodoResponse } from "./enums";
 
 export async function toggleTodo(
     id: number,
@@ -20,10 +21,7 @@ export async function getTodos(): Promise<
     return prisma.todo.findMany();
 }
 
-export async function createTodo(
-    data: FormData,
-    onOldDeadline: () => void
-): Promise<void> {
+export async function createTodo(data: FormData): Promise<CreateTodoResponse> {
     const title = data.get("title")?.valueOf() as string;
     const description = data.get("description")?.valueOf() as string;
     const deadline = new Date(data.get("deadline")?.valueOf() as string);
@@ -31,13 +29,13 @@ export async function createTodo(
     const now = new Date(Date.now());
 
     if (typeof title !== "string" || title.length === 0) {
-        throw new Error("Invalid title");
+        return CreateTodoResponse.InvalidTypes;
     } else if (typeof description !== "string" || description.length !== 0) {
-        throw new Error("Invalid description");
+        return CreateTodoResponse.InvalidTypes;
     } else if (!(deadline instanceof Date) || isNaN(deadline.getTime())) {
-        throw new Error("Invalid deadline");
+        return CreateTodoResponse.InvalidTypes;
     } else if (now > deadline) {
-        if (onOldDeadline) onOldDeadline();
+        return CreateTodoResponse.InvalidDeadline;
     } else {
         await prisma.todo.create({
             data: {
@@ -47,5 +45,7 @@ export async function createTodo(
                 deadline,
             },
         });
+
+        return CreateTodoResponse.Ok;
     }
 }

@@ -2,11 +2,20 @@
 
 import Link from "next/link";
 import { createTodo } from "../dbfunc";
-import { useState } from "react";
+import { CreateTodoResponse } from "../enums";
+import { useRef } from "react";
 import Modal from "@/components/Modal";
 
 export default function New(): JSX.Element {
-    const [showModal, setShowModal] = useState<boolean>(false);
+    const modal = useRef<HTMLDialogElement>(null);
+
+    const showModal = () => {
+        modal.current?.showModal();
+    };
+
+    const closeModal = () => {
+        modal.current?.close();
+    };
 
     return (
         <>
@@ -17,9 +26,15 @@ export default function New(): JSX.Element {
             <hr />
 
             <form
-                action={(f: FormData) =>
-                    createTodo(f, () => setShowModal(true))
-                }
+                action={(f: FormData) => {
+                    const res = createTodo(f);
+                    res.then((value) => {
+                        if (value === CreateTodoResponse.InvalidDeadline) {
+                            console.log("Open modal");
+                            showModal();
+                        }
+                    });
+                }}
                 className="flex flex-col gap-6"
             >
                 <div className="grid grid-flow-dense grid-cols-12 gap-4 justify-between">
@@ -74,12 +89,13 @@ export default function New(): JSX.Element {
                     </button>
                 </div>
             </form>
+
             <Modal
+                ref={modal}
                 title="Invalid deadline"
-                content="The deadline should happen after the current date"
-                submitTxt="I understand"
-                enabled={showModal}
-                onSubmit={() => setShowModal(false)}
+                content="The deadline should be placed after the current date"
+                proceedTxt="I understand"
+                onProceed={closeModal}
             />
         </>
     );
